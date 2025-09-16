@@ -1,0 +1,30 @@
+<mat-expansion-panel class="child-panel color-background">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="tipografia-marca headers">
+      {{ titulo }}
+    </mat-panel-title>
+    <mat-panel-description></mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="row">
+    <div class="col-md-6" *ngFor="let servicio of servicios">
+      <div class="card servicio-card">
+        <div class="card-body">
+          <p class="card-title tipografia-marca headersSub">
+            {{ servicio.servicio }}
+          </p>
+          <p class="card-text tipografia-marca descriptionCard">
+            Duración: {{ servicio.duracionServicio }}
+        </p>
+        <div class="divButton">
+          <button
+            class="btn color-background tipografia-marca btnAgendar"
+            (click)="onSeleccionar(servicio)">
+            Agendar
+          </button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>

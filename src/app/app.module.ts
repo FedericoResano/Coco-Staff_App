@@ -23,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    
     
   ],
   providers: [],

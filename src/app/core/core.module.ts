@@ -7,8 +7,9 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CoreRoutingModule } from './core.routing.module';
 import { MaterialModule } from '../material/material.module';
 import { TurnosModule } from '../turnos/turnos.module';
-import { TurnosRoutingModule } from '../turnos/turnos.routing.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -24,9 +25,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CoreRoutingModule,
     TurnosModule,
     MaterialModule,
-     MatExpansionModule       
-    // StoreModule.forFeature(fromFeatureUser.appStoreFeatureKey, fromFeatureUser.userReducer),
-    // EffectsModule.forFeature([AppStoreEffects])
+    MatExpansionModule,
+    MatDividerModule,
+    MatListModule
+
 
   ],
   exports:[

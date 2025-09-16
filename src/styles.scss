@@ -1,17 +1,70 @@
-.color-app
+.color-background
 {
-    background-color: #212631;
-    color:white;
+    background-color: #212631 !important;
+  
 }
 
 .dropdown-centered {
-  width: 50vw;              /* ocupa la mitad del ancho de la pantalla */
-  max-width: 600px;         /* opcional: límite máximo */
+  width: 50vw;              
+  max-width: 600px;       
   margin: 0 auto;    
-  color:white;      /* centra horizontalmente */
-  background: #212631;         /* color de fondo */
-  border: 1px solid #212631;   /* borde */
-  border-radius: 8px;       /* esquinas redondeadas */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* sombra */
-  padding: 1rem;            /* espacio interno */
+  color:white;   
+  background: #212631;      
+  border: 1px solid #212631;  
+  border-radius: 8px;     
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 1rem;         
 }
+
+.panel-expansion{
+      margin-top:40px;
+      border: 1px solid 212631;
+      height: auto;
+      // color:white;
+}
+
+.tipografia-marca{
+  font-family: fangsong !important;
+  color: white;
+}
+
+.titulos{
+  font-size: 3rem;
+   margin: 0;
+}
+
+.headers{
+  font-size: 1.5rem;
+}
+
+.headersSub{
+  font-size: 1.2rem;
+  color: #212631 !important;
+}
+
+.descriptionCard{
+  font-size: 1rem;
+  color: #212631 !important;
+}
+
+.child-panel {
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+.child-panel .mat-expansion-panel-header {
+  padding: 0 16px; /* ajusta el padding si quieres */
+  min-height: 40px; /* altura más compacta */
+}
+
+.btnAgregar{
+  margin-left:auto !important;
+}
+
+.divButton{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+

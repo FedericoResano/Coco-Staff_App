@@ -1,33 +1,8 @@
-// .toolbar{
-//     background-color: black;
-//     margin-bottom: 0
-//   }
-
-  // .button{
-  //   color: white;
-  // }
-
-
-  // .titulo{
-  //   color:white;
-  //   font-size: 2rem;
-  //   text-align: center;
-
-  // }
-
-  // .componente{
-  //   color:white;
-  //   font-size: 2rem;
-  //   text-align: center;
-  //   margin-left: 450px;
-  // }
-
-  
 .toolbar {
   display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center;     /* centra verticalmente */
-  height: 60px;            /* altura de la toolbar */
+  justify-content: center;
+  align-items: center;
+  height: 60px;
 }
 
 .titulo {

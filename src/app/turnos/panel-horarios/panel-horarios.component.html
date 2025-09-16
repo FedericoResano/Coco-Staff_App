@@ -1,0 +1,19 @@
+<div class="calendar">
+  <div class="weekdays">
+    <span *ngFor="let day of ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']">{{ day }}</span>
+  </div>
+  <div class="days">
+    <button *ngFor="let day of daysInMonth"
+            [disabled]="isUnavailable(day)"
+            (click)="selectDate(day)"
+            [class.selected]="selectedDate?.toDateString() === day.toDateString()"
+            [class.unavailable]="isUnavailable(day)">
+      {{ day.getDate() }}
+    </button>
+  </div>
+</div>
+
+<div *ngIf="selectedDate" class="times">
+  <h4>Horarios disponibles</h4>
+  <button *ngFor="let time of availableTimes">{{ time }}</button>
+</div>

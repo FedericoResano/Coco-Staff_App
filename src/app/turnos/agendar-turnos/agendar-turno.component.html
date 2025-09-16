@@ -1,44 +1,13 @@
-
-<div class="dropdown-centered">
-  <h2 style="text-align:center;">Agendar Turno</h2>
-    <mat-expansion-panel hideToggle class="color-app">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="color-app"> Corte </mat-panel-title>
-      <mat-panel-description> 
-
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-  <div class="row">
-        <div class="col-md-6" *ngFor="let servicio of serviciosCorteModel" >
-    <div class="card servicio-card">
-        <div class="card-body">
-            <h5 class="card-title">{{ servicio.servicio }}</h5>
-            <p class="card-text">Duración: {{ servicio.duracionServicio }}</p>
-            <button class="btn color-app btnAgendar" (click)="seleccionarServicio(servicio)">Agendar</button>
-        </div>
-        </div>
-    </div>
-    </div>
-  </mat-expansion-panel>
-    <mat-expansion-panel hideToggle class="color-app">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="color-app"> Color </mat-panel-title>
-      <mat-panel-description> 
-
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-  <div class="row">
+<div class="dropdown-centered" *ngIf="servicioElegido == null">
+  <app-servicios-panel *ngFor="let grupo of agrupadosPorTipo"
+    [titulo]="grupo.descripcion"
+    [servicios]="grupo.servicios"
+    (servicioSeleccionado)="seleccionarServicio($event)">
+  </app-servicios-panel>
   
-            <div class="col-md-6" *ngFor="let servicio of serviciosColorModel">
-    <div class="card servicio-card">
-        <div class="card-body">
-            <h5 class="card-title">{{ servicio.servicio }}</h5>
-            <p class="card-text">Duración: {{ servicio.duracionServicio }}</p>
-            <button class="btn btn-primary color-app btnAgendar" (click)="seleccionarServicio(servicio)">Agendar</button>
-        </div>
-        </div>
-   
-    </div>
-    </div>
-  </mat-expansion-panel>
+</div>
+<div class="dropdown-centered" *ngIf="servicioElegido != null">
+  <app-panel-horarios></app-panel-horarios>
+ 
+  
 </div>

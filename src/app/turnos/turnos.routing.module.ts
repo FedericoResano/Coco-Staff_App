@@ -4,7 +4,7 @@ import { AgendarTurnoComponent } from './agendar-turnos/agendar-turno.component'
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'turnos',
         component: AgendarTurnoComponent
     }
 ];
