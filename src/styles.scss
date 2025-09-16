@@ -1,0 +1,17 @@
+.color-app
+{
+    background-color: #212631;
+    color:white;
+}
+
+.dropdown-centered {
+  width: 50vw;              /* ocupa la mitad del ancho de la pantalla */
+  max-width: 600px;         /* opcional: límite máximo */
+  margin: 0 auto;    
+  color:white;      /* centra horizontalmente */
+  background: #212631;         /* color de fondo */
+  border: 1px solid #212631;   /* borde */
+  border-radius: 8px;       /* esquinas redondeadas */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* sombra */
+  padding: 1rem;            /* espacio interno */
+}

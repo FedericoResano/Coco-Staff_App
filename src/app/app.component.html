@@ -1,0 +1,20 @@
+
+<html lang="es" *ngIf="imagesLoaded">
+  <app-toolbar></app-toolbar> 
+
+  <!-- <div class="d-flex" id="wrapper">
+    >   -->
+   <div class="background-container" 
+     [ngStyle]="{'background-image': 'url(' + images[currentIndex] + ')'}">
+  <div >
+    <div class="container">
+  <img src="assets/img/logo1.png" alt="logo" class="logo"> 
+  
+  
+</div>
+<router-outlet></router-outlet> 
+</div>
+    </div>
+  <!-- </div> -->
+  
+</html>
