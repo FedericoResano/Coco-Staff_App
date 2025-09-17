@@ -1,7 +1,10 @@
+.border-white{
+  border:1px solid white;
+}
+
 .color-background
 {
     background-color: #212631 !important;
-  
 }
 
 .dropdown-centered {
@@ -39,12 +42,10 @@
 
 .headersSub{
   font-size: 1.2rem;
-  color: #212631 !important;
 }
 
 .descriptionCard{
   font-size: 1rem;
-  color: #212631 !important;
 }
 
 .child-panel {
@@ -62,6 +63,11 @@
   margin-left:auto !important;
 }
 
+.btnSiguiente{
+  margin-top:15px;
+  border: 1px solid white;
+  margin-left:auto !important
+}
 .divButton{
   display: flex;
   justify-content: center;

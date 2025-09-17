@@ -1,6 +1,6 @@
 .listado {
-  width: 250px;
-  border: 1px solid #ccc;
+  margin-top: 20px;
+  width: auto;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -12,13 +12,13 @@
 }
 
 .listado-item:hover {
-  background-color: grey; /* hover */
+  background-color: #0d6efd; /* hover */
   transform: scale(1.02); /* leve agrandamiento */
 }
 
 .listado-item.selected {
-  background-color: white; /* seleccionado */
-  color:  #212631;
+  background-color: #0d6efd; /* seleccionado */
+  color:  white;
   font-weight: bold;
   transform: scale(1.03); /* un poco más grande para el efecto */
 }

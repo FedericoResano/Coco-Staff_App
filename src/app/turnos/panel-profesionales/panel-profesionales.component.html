@@ -1,19 +1,13 @@
 <div class="listado-titulo tipografia-marca headers">Profesionales</div>
-<div class="listado">
-  <div
-    *ngFor="let profesional of profesionales"
-    class="listado-item"
-    [class.selected]="profesional === seleccionado"
-    (click)="seleccionarEmpleado(profesional)"
-  >
+<div class="listado border-white">
+  <div *ngFor="let profesional of profesionales" class="listado-item tipografia-marca headersSub"
+    [class.selected]="profesional === seleccionado" (click)="seleccionarEmpleado(profesional)">
     {{ profesional.nombre }}
   </div>
 </div>
 <div class="divButton">
 
-    <button
-    class="btn color-background tipografia-marca btnAgendar"
-    (click)="continuar()">
+  <button class="btn btn-primary tipografia-marca btnSiguiente" (click)="continuar()">
     Siguiente
-</button>
+  </button>
 </div>

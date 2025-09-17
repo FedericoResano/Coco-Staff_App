@@ -1,20 +1,31 @@
-<div class="calendar">
+<div class="calendar-carousel">
+  <!-- Flecha izquierda -->
+  <button class="arrow" (click)="scrollLeft()" [class.disabled]="scrollDisabled">&lt;</button>
 
-  <div class="weekdays">
-    <span *ngFor="let dia of ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']">{{ dia }}</span>
+  <!-- Contenedor de días -->
+  <div class="days-container" #daysContainer>
+    <div *ngFor="let dia of diasDeLaSemana" class="day" [class.disabled]="fechaInvalida(dia)"
+      [class.selected]="selectedDate?.toDateString() === dia.toDateString()"
+      (click)="!fechaInvalida(dia) && selectDate(dia)">
+      <span class="day-letter">{{ nombresDeDias[dia.getDay()] }}</span>
+      <span class="day-letter">{{ dia.getDate() }}</span>
+    </div>
   </div>
-  <div class="days">
-    <button *ngFor="let dia of diasDeLaSemana"
-            [disabled]="fechaInvalida(dia)"
-            (click)="selectDate(dia)"
-            [class.selected]="selectedDate?.toDateString() === dia.toDateString()"
-            >
-      {{ dia.getDate() }}
+
+  <!-- Flecha derecha -->
+  <button class="arrow" (click)="scrollRight()">&gt;</button>
+</div>
+
+<div *ngIf="selectedDate" class="times">
+  <label>Horarios disponibles</label>
+  <div class="horarios">
+    <button *ngFor="let horario of horariosDisponibles" class="horario" (click)="selectHorario(horario)"
+      [class.selected]="selectedHorario?.horario === horario.horario">
+      {{ horario.horario }}
     </button>
   </div>
 </div>
 
-<div *ngIf="selectedDate" class="times">
-  <h4>Horarios disponibles</h4>
-  <button *ngFor="let horario of horariosDisponibles">{{ horario.horario }}</button>
-</div>
+<button class="btn btn-primary tipografia-marca btnSiguiente" (click)="continuar()">
+    Siguiente
+  </button>

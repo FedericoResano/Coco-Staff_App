@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HorariosModel } from 'src/app/shared/models/horariosModels';
 import { HorariosService } from 'src/app/shared/services/horariosService';
 
@@ -8,19 +8,21 @@ import { HorariosService } from 'src/app/shared/services/horariosService';
   styleUrls: ['./panel-horarios.component.css']
 })
 export class PanelHorariosComponent implements OnInit {
-
+  @ViewChild('daysContainer', { static: false }) daysContainer!: ElementRef;
   @Input() codigoProfesional: number | null = null;
+  // @Output() horarioSeleccionado:[Date, HorariosModel] = new EventEmitter<[Date, HorariosModel]>()
 
   fechaDeHoy = new Date();
   fechaOcupada:Date[] = [];
   // diaActual = this.fechaDeHoy.getDay();
   mesEnCurso = this.fechaDeHoy.getMonth();
   selectedDate: Date | null = null;
+  selectedHorario: HorariosModel | null = null;
   horariosDisponibles: HorariosModel[]= [];
-
+  scrollDisabled =false;
   constructor(private horariosService: HorariosService) { }
   diasDeLaSemana: Date[] = [];
-
+  nombresDeDias= ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   ngOnInit() {
     this.cargarHorarios();
     this.generateCalendar();
@@ -38,29 +40,59 @@ export class PanelHorariosComponent implements OnInit {
   }
 
   fechaInvalida(fecha: Date): boolean {
+    if(fecha.getDay() == 0 || fecha.getDay() == 1)
+      return true;
+    
     return this.fechaOcupada.some(d =>
       d.getFullYear() === fecha.getFullYear() &&
       d.getMonth() === fecha.getMonth() &&
       d.getDate() === fecha.getDate()
     );
   }
-
-  selectDate(date: Date) {
-    if (!this.fechaInvalida(date)) {
-      this.selectedDate = date;
-    }
+ selectDate(dia: Date) {
+    this.selectedDate = dia;
   }
 
-  cargarHorarios(): void {
+  selectHorario(horario: HorariosModel) {
     debugger;
-    console.log(this.fechaDeHoy);
+    this.selectedHorario = horario;
+  }
+
+  cargarHorarios(date?:Date): void {
     this.horariosService.getAll(this.fechaDeHoy.toISOString().split('T')[0], this.codigoProfesional).subscribe((data) => {
       this.horariosDisponibles = data;
+      if(this.horariosDisponibles.length> 0)
+        this.selectDate(this.fechaDeHoy);
     });
-    // if(this.horariosDisponibles.length == 0){
-    //   this.fechaOcupada.includes(this.fechaDeHoy);
-    //   this.fechaDeHoy.setDate(this.fechaDeHoy.getDate() + 1);
-    //   this.cargarHorarios();
-    // }
   }
+   scrollLeft() {
+    this.daysContainer.nativeElement.scrollBy({ left: -200, behavior: 'smooth' });
+    this.fechaDeHoy.setDate(this.fechaDeHoy.getDate() - 2)
+    if(this.soloFecha(this.fechaDeHoy) < this.soloFecha(new Date()))
+     { 
+      this.fechaDeHoy = new Date();
+      return this.scrollDisabled =true;
+     }
+
+    this.generateCalendar();
+    return this.scrollDisabled = false;
+  }
+
+  scrollRight() {
+    this.daysContainer.nativeElement.scrollBy({ left: 200, behavior: 'smooth' });
+     this.fechaDeHoy.setDate(this.fechaDeHoy.getDate() + 2)
+      this.generateCalendar();
+  }
+
+  soloFecha(fecha: Date): Date {
+  return new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
+}
+
+    continuar(){
+        // if(this.selectDate != null && this.selectHorario){
+        //      let horarioElegido = [this.selectedDate, this.selectedHorario];
+        //     this.horarioSeleccionado.emit(horarioElegido);
+
+        // }
+    }
 }
