@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TiposServiciosModel } from 'src/app/shared/class/tiposServiciosModel';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { ServiciosModel } from 'src/app/shared/class/ServiciosModel';
 import { ServiciosService } from 'src/app/shared/services/servicioService';
+import { ServiciosModel } from 'src/app/shared/models/serviciosModel';
+import { ProfesionalModel } from 'src/app/shared/models/profesionalesModel';
 
 @Component({
     standalone:false,
@@ -14,10 +13,12 @@ export class AgendarTurnoComponent implements OnInit {
     serviciosModel: ServiciosModel[] = [] ;
     agrupadosPorTipo: { tipo: number; descripcion: string; servicios: ServiciosModel[] }[] = [];
     servicioElegido: ServiciosModel = null;
+    profesionalElegido: ProfesionalModel = null;
     constructor(private _srvServicios: ServiciosService) { }
 
     ngOnInit(): void {
-        console.log(this.servicioElegido);
+        this.servicioElegido = null;
+        this.profesionalElegido= null;
         this._srvServicios.getAll().subscribe(data => {
             this.serviciosModel = data;
             this.agrupadosPorTipo = this.groupByTipo(this.serviciosModel);
@@ -32,7 +33,11 @@ export class AgendarTurnoComponent implements OnInit {
 
     seleccionarServicio(servicio: ServiciosModel) {
       this.servicioElegido= servicio;
-      console.log(this.servicioElegido);
+    }
+
+    profesionalSeleccionado(profesional:ProfesionalModel){
+      this.profesionalElegido = profesional;
+      console.log(profesional);
     }
 
     private groupByTipo(servicios: ServiciosModel[]) {

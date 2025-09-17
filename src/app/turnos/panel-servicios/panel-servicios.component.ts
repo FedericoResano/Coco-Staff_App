@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ServiciosModel } from 'src/app/shared/class/ServiciosModel';
+import { ServiciosModel } from 'src/app/shared/models/serviciosModel';
 
 @Component({
   selector: 'app-servicios-panel',

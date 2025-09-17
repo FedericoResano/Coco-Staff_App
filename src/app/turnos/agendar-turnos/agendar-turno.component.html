@@ -6,8 +6,10 @@
   </app-servicios-panel>
   
 </div>
-<div class="dropdown-centered" *ngIf="servicioElegido != null">
-  <app-panel-horarios></app-panel-horarios>
+<div class="dropdown-centered" *ngIf="servicioElegido != null && profesionalElegido == null">
+  <app-panel-profesionales (profesionalSeleccionado)="profesionalSeleccionado($event)"></app-panel-profesionales>
  
-  
+</div>
+<div class="dropdown-centered" *ngIf="profesionalElegido != null">
+  <app-panel-horarios [codigoProfesional]="profesionalElegido.codigo"></app-panel-horarios>
 </div>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CoreRoutingModule } from './core.routing.module';
@@ -16,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     SidebarComponent,
-    LoginComponent,
     ToolbarComponent,
     InicioComponent
   ],
@@ -33,7 +31,6 @@ import { MatListModule } from '@angular/material/list';
   ],
   exports:[
     SidebarComponent,
-    LoginComponent,
     ToolbarComponent,
     InicioComponent,
     CoreRoutingModule

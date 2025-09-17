@@ -1,0 +1,24 @@
+.listado {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.listado-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.listado-item:hover {
+  background-color: grey; /* hover */
+  transform: scale(1.02); /* leve agrandamiento */
+}
+
+.listado-item.selected {
+  background-color: white; /* seleccionado */
+  color:  #212631;
+  font-weight: bold;
+  transform: scale(1.03); /* un poco más grande para el efecto */
+}

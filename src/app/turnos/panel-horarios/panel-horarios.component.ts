@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HorariosModel } from 'src/app/shared/models/horariosModels';
+import { HorariosService } from 'src/app/shared/services/horariosService';
 
 @Component({
   selector: 'app-panel-horarios',
@@ -7,43 +9,58 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PanelHorariosComponent implements OnInit {
 
-  @Input() unavailableDates: Date[] = []; // Fechas no disponibles
-  @Input() availableTimes: string[] = []; // Horarios disponibles
+  @Input() codigoProfesional: number | null = null;
 
-  today = new Date();
-  currentMonth = this.today.getMonth();
-  currentYear = this.today.getFullYear();
+  fechaDeHoy = new Date();
+  fechaOcupada:Date[] = [];
+  // diaActual = this.fechaDeHoy.getDay();
+  mesEnCurso = this.fechaDeHoy.getMonth();
   selectedDate: Date | null = null;
+  horariosDisponibles: HorariosModel[]= [];
 
-  daysInMonth: Date[] = [];
+  constructor(private horariosService: HorariosService) { }
+  diasDeLaSemana: Date[] = [];
 
   ngOnInit() {
-    this.generateCalendar(this.currentMonth, this.currentYear);
+    this.cargarHorarios();
+    this.generateCalendar();
   }
 
-  generateCalendar(month: number, year: number) {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-
-    this.daysInMonth = [];
-    for (let day = 1; day <= lastDay.getDate(); day++) {
-      const date = new Date(year, month, day);
-      this.daysInMonth.push(date);
+  generateCalendar() {
+    this.diasDeLaSemana = [];
+    for (let day = 0; day < 7; day++) {
+      let fecha = new Date(this.fechaDeHoy);
+    fecha.setDate(this.fechaDeHoy.getDate() + day);
+      if(!this.fechaOcupada.includes(fecha))
+      this.diasDeLaSemana.push(fecha);
+    console.log("Fecha: ", fecha);
     }
   }
 
-  isUnavailable(date: Date): boolean {
-    return this.unavailableDates.some(d =>
-      d.getFullYear() === date.getFullYear() &&
-      d.getMonth() === date.getMonth() &&
-      d.getDate() === date.getDate()
+  fechaInvalida(fecha: Date): boolean {
+    return this.fechaOcupada.some(d =>
+      d.getFullYear() === fecha.getFullYear() &&
+      d.getMonth() === fecha.getMonth() &&
+      d.getDate() === fecha.getDate()
     );
   }
 
   selectDate(date: Date) {
-    if (!this.isUnavailable(date)) {
+    if (!this.fechaInvalida(date)) {
       this.selectedDate = date;
     }
   }
 
+  cargarHorarios(): void {
+    debugger;
+    console.log(this.fechaDeHoy);
+    this.horariosService.getAll(this.fechaDeHoy.toISOString().split('T')[0], this.codigoProfesional).subscribe((data) => {
+      this.horariosDisponibles = data;
+    });
+    // if(this.horariosDisponibles.length == 0){
+    //   this.fechaOcupada.includes(this.fechaDeHoy);
+    //   this.fechaDeHoy.setDate(this.fechaDeHoy.getDate() + 1);
+    //   this.cargarHorarios();
+    // }
+  }
 }

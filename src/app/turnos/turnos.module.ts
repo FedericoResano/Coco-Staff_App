@@ -5,13 +5,15 @@ import { TurnosRoutingModule } from './turnos.routing.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PanelServiciosComponent } from './panel-servicios/panel-servicios.component';
 import { PanelHorariosComponent } from './panel-horarios/panel-horarios.component';
+import { PanelProfesionalesComponent } from './panel-profesionales/panel-profesionales.component';
 
 
 @NgModule({
     declarations: [
         AgendarTurnoComponent, 
         PanelServiciosComponent,
-        PanelHorariosComponent      
+        PanelHorariosComponent   ,
+        PanelProfesionalesComponent   
     ],
     imports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { PanelHorariosComponent } from './panel-horarios/panel-horarios.componen
     exports: [
         AgendarTurnoComponent,
         TurnosRoutingModule,
-        PanelHorariosComponent
+        PanelHorariosComponent,
+        PanelProfesionalesComponent
     ]
 })
 export class TurnosModule { }
