@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { HorariosModel } from 'src/app/shared/models/horariosModels';
+import { HorarioModel, HorarioTurnoModel } from 'src/app/shared/models/horarioModel';
 import { HorariosService } from 'src/app/shared/services/horariosService';
 
 @Component({
@@ -10,15 +10,15 @@ import { HorariosService } from 'src/app/shared/services/horariosService';
 export class PanelHorariosComponent implements OnInit {
   @ViewChild('daysContainer', { static: false }) daysContainer!: ElementRef;
   @Input() codigoProfesional: number | null = null;
-  // @Output() horarioSeleccionado:[Date, HorariosModel] = new EventEmitter<[Date, HorariosModel]>()
+  @Output() horarioSeleccionado = new EventEmitter<HorarioTurnoModel>()
 
   fechaDeHoy = new Date();
   fechaOcupada:Date[] = [];
   // diaActual = this.fechaDeHoy.getDay();
   mesEnCurso = this.fechaDeHoy.getMonth();
   selectedDate: Date | null = null;
-  selectedHorario: HorariosModel | null = null;
-  horariosDisponibles: HorariosModel[]= [];
+  selectedHorario: HorarioModel | null = null;
+  horariosDisponibles: HorarioModel[]= [];
   scrollDisabled =false;
   constructor(private horariosService: HorariosService) { }
   diasDeLaSemana: Date[] = [];
@@ -35,7 +35,6 @@ export class PanelHorariosComponent implements OnInit {
     fecha.setDate(this.fechaDeHoy.getDate() + day);
       if(!this.fechaOcupada.includes(fecha))
       this.diasDeLaSemana.push(fecha);
-    console.log("Fecha: ", fecha);
     }
   }
 
@@ -49,12 +48,12 @@ export class PanelHorariosComponent implements OnInit {
       d.getDate() === fecha.getDate()
     );
   }
+
  selectDate(dia: Date) {
     this.selectedDate = dia;
   }
 
-  selectHorario(horario: HorariosModel) {
-    debugger;
+  selectHorario(horario: HorarioModel) {
     this.selectedHorario = horario;
   }
 
@@ -88,11 +87,11 @@ export class PanelHorariosComponent implements OnInit {
   return new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
 }
 
-    continuar(){
-        // if(this.selectDate != null && this.selectHorario){
-        //      let horarioElegido = [this.selectedDate, this.selectedHorario];
-        //     this.horarioSeleccionado.emit(horarioElegido);
-
-        // }
+  horarioElegido(){
+    if(this.selectDate != null && this.selectHorario)
+      {
+          var horarioElegido = {fecha: this.selectedDate, horarioModel: this.selectedHorario};
+          this.horarioSeleccionado.emit(horarioElegido);
+      }
     }
 }

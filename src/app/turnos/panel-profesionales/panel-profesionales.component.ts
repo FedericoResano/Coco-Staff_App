@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { ProfesionalModel } from "src/app/shared/models/profesionalesModel";
-import { ProfesionalesService } from "src/app/shared/services/profesionales";
+import { ProfesionalModel } from "src/app/shared/models/profesionalModel";
+import { ProfesionalesService } from "src/app/shared/services/profesionalesService";
 
 @Component({
     selector: "app-panel-profesionales",

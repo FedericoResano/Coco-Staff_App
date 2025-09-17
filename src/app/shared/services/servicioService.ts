@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ServiciosModel } from '../models/serviciosModel';
+import { ServicioModel } from '../models/servicioModel';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ServiciosService {
 
     constructor(private http: HttpClient) {}
 
-    getAll(): Observable<ServiciosModel[]> {
-        return this.http.get<ServiciosModel[]>(this.apiUrl+ "/ObtenerTodos");
+    getAll(): Observable<ServicioModel[]> {
+        return this.http.get<ServicioModel[]>(this.apiUrl+ "/ObtenerTodos");
     }
 }

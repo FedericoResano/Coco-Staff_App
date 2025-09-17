@@ -1,0 +1,78 @@
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" class="p-4 bg-light rounded color-background">
+    <label class="mb-3 headers tipografia-marca">Datos Personales</label>
+    <div class="row mb-3">
+
+
+        <div class="col">
+            <label for="nombre" class="form-label headersSub tipografia-marca">Nombre*</label>
+            <input type="text" id="nombre" formControlName="nombre" class="form-control bg-white tipografia-marca " />
+
+            <div *ngIf="clienteForm.get('nombre')?.invalid && clienteForm.get('nombre')?.touched">
+                <div class="tipografia-marca" *ngIf="clienteForm.get('nombre')?.errors?.['required']">El nombre es
+                    obligatorio.</div>
+                <div class="tipografia-marca" *ngIf="clienteForm.get('nombre')?.errors?.['maxlength']">El nombre no
+                    puede superar los 50 caracteres.</div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label for="apellido" class="form-label tipografia-marca  headersSub">Apellido*</label>
+            <input type="text" id="apellido" formControlName="apellido" class="form-control bg-white tipografia-marca " />
+
+            <div *ngIf="clienteForm.get('apellido')?.invalid && clienteForm.get('apellido')?.touched">
+                <div class="tipografia-marca" *ngIf="clienteForm.get('apellido')?.errors?.['required']">El apellido es
+                    obligatorio.</div>
+                <div class="tipografia-marca" *ngIf="clienteForm.get('apellido')?.errors?.['maxlength']">El apellido no
+                    puede superar los 50 caracteres.</div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    
+    <div class="mb-3">
+
+
+        <label for="mail" class="form-label tipografia-marca  headersSub ">Mail*</label>
+        <input type="email" id="mail" formControlName="mail" class="form-control bg-white tipografia-marca " />
+        
+        <div *ngIf="clienteForm.get('mail')?.invalid && clienteForm.get('mail')?.touched">
+            <div class="tipografia-marca" *ngIf="clienteForm.get('mail')?.errors?.['required']">El mail es obligatorio.
+            </div>
+            <div class="tipografia-marca" *ngIf="clienteForm.get('mail')?.errors?.['email']">Ingrese un mail válido.
+            </div>
+            <div class="tipografia-marca" *ngIf="clienteForm.get('mail')?.errors?.['maxlength']">El mail no puede
+                superar los 50 caracteres.</div>
+        </div>
+
+
+    </div>
+
+
+    <div class="mb-3">
+
+
+        <label for="telefono" class="form-label tipografia-marca headersSub">Teléfono*</label>
+        <input type="tel" id="telefono" formControlName="telefono" class="form-control bg-white tipografia-marca " />
+        
+        <div *ngIf="clienteForm.get('telefono')?.invalid && clienteForm.get('telefono')?.touched">
+            <div class="tipografia-marca" *ngIf="clienteForm.get('telefono')?.errors?.['required']">El teléfono es
+                obligatorio.</div>
+            <div class="tipografia-marca" *ngIf="clienteForm.get('telefono')?.errors?.['maxlength']">No puede superar
+                los 20
+                caracteres.</div>
+            <div class="tipografia-marca" *ngIf="clienteForm.get('telefono')?.errors?.['pattern']">Solo puede ingresar
+                caracteres numericos.</div>
+        </div>
+
+
+    </div>
+
+
+    <div class="divButton">
+        <!-- <button type="submit" class="btn btnSubmit tipografia-marca" [disabled]="clienteForm.invalid">Enviar</button> -->
+        <button type="submit" class="btn btnSubmit tipografia-marca">Agendar</button>
+    </div>
+</form>

@@ -1,30 +1,30 @@
-<mat-expansion-panel class="child-panel color-background">
-  <mat-expansion-panel-header>
-    <mat-panel-title class="tipografia-marca headers">
-      {{ titulo }}
-    </mat-panel-title>
-    <mat-panel-description></mat-panel-description>
-  </mat-expansion-panel-header>
+<div *ngIf="agrupadosPorTipo != null">
+  <mat-expansion-panel class="child-panel color-background" *ngFor="let grupo of agrupadosPorTipo">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="tipografia-marca headers">
+        {{ grupo.descripcion }}
+      </mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
 
-  <div class="row">
-    <div class="col-md-6" *ngFor="let servicio of servicios">
-      <div class="card border-white color-background">
-        <div class="card-body">
-          <p class="card-title tipografia-marca headersSub">
-            {{ servicio.servicio }}
-          </p>
-          <p class="card-text tipografia-marca descriptionCard">
-            Duración: {{ servicio.duracionServicio }}
-        </p>
-        <div class="divButton">
-          <button
-            class="btn btn-primary tipografia-marca btnAgendar"
-            (click)="onSeleccionar(servicio)">
-            Agendar
-          </button>
-        </div>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let servicio of grupo.servicios">
+        <div class="card border-white color-background">
+          <div class="card-body">
+            <p class="card-title tipografia-marca headersSub">
+              {{ servicio.servicio }}
+            </p>
+            <p class="card-text tipografia-marca descriptionCard">
+              Duración: {{ servicio.duracionServicio }}
+            </p>
+            <div class="divButton">
+              <button class="btn btn-primary tipografia-marca btnSubmit" (click)="onSeleccionar(servicio)">
+                Seleccionar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</mat-expansion-panel>
+  </mat-expansion-panel>
+</div>

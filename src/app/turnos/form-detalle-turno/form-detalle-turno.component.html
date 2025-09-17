@@ -1,0 +1,53 @@
+<div class="container mt-4 p-4 bg-light rounded shadow color-background">
+  <!-- Check de confirmación -->
+  <div class="text-center mb-4">
+    <i class="bi bi-check-circle-fill text-success fs-1"></i>
+    <label class="text-success mt-2 tipografia-marca">Reserva generada correctamente</label>
+  </div>
+
+  <!-- Datos personales -->
+  <label class="mb-3 tipografia-marca headers">Datos Personales</label>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Nombre:</label>
+      <div class="tipografia-marca">{{ turnoReservado.clienteModel.nombreCliente }}</div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Apellido:</label>
+      <div class="tipografia-marca">{{ turnoReservado.clienteModel.apellidoCliente  }}</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Mail:</label>
+      <div class="tipografia-marca">{{ turnoReservado.clienteModel.mailCliente  }}</div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Teléfono:</label>
+      <div class="tipografia-marca">{{ turnoReservado.clienteModel.telefonoCliente  }}</div>
+    </div>
+  </div>
+
+  <!-- Detalle -->
+  <h5 class="mb-3 tipografia-marca headers">Detalle</h5>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Servicio:</label>
+      <div class="tipografia-marca">{{ turnoReservado.servicioModel.servicio }}</div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label fw-bold  tipografia-marca headersSub">Horario:</label>
+      <div class="tipografia-marca">{{ turnoReservado.horarioModel.horario }}</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Fecha:</label>
+      <div class="tipografia-marca">{{ turnoReservado.fechaTurno }}</div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label fw-bold tipografia-marca headersSub">Profesional:</label>
+      <div class="tipografia-marca">{{ turnoReservado.empleadoModel.nombre }}</div>
+    </div>
+  </div>
+</div>

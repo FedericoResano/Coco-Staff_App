@@ -6,26 +6,35 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { PanelServiciosComponent } from './panel-servicios/panel-servicios.component';
 import { PanelHorariosComponent } from './panel-horarios/panel-horarios.component';
 import { PanelProfesionalesComponent } from './panel-profesionales/panel-profesionales.component';
+import { FormClienteComponent } from './form-cliente/form-cliente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormDetalleTurnoComponent } from './form-detalle-turno/form-detalle-turno.component';
 
 
 @NgModule({
     declarations: [
         AgendarTurnoComponent, 
         PanelServiciosComponent,
-        PanelHorariosComponent   ,
-        PanelProfesionalesComponent   
+        PanelHorariosComponent,
+        PanelProfesionalesComponent,
+        FormClienteComponent,
+        FormDetalleTurnoComponent  
     ],
     imports: [
         CommonModule,
         TurnosRoutingModule,
-        MatExpansionModule       
+        MatExpansionModule,
+      ReactiveFormsModule, 
+      FormsModule
         
     ],
     exports: [
         AgendarTurnoComponent,
         TurnosRoutingModule,
         PanelHorariosComponent,
-        PanelProfesionalesComponent
+        PanelProfesionalesComponent,
+        FormClienteComponent,
+        FormDetalleTurnoComponent
     ]
 })
 export class TurnosModule { }
