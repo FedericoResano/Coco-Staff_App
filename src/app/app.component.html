@@ -1,20 +1,26 @@
+<!-- <html lang="es" *ngIf="imagesLoaded">
+<app-toolbar></app-toolbar>
 
-<html lang="es" *ngIf="imagesLoaded">
-  <app-toolbar></app-toolbar> 
-
-  <!-- <div class="d-flex" id="wrapper">
-    >   -->
-   <div class="background-container" 
-     [ngStyle]="{'background-image': 'url(' + images[currentIndex] + ')'}">
-  <div >
+<div class="background-container" [ngStyle]="{'background-image': 'url(' + images[currentIndex] + ')'}">
+  <div>
     <div class="container">
-  <img src="assets/img/logo1.png" alt="logo" class="logo"> 
-  
-  
-</div>
-<router-outlet></router-outlet> 
-</div>
+      <img src="assets/img/logo1.png" alt="logo" class="logo" [routerLink]="('/')">
+
+      <router-outlet></router-outlet>
     </div>
-  <!-- </div> -->
-  
-</html>
+    </div>
+</div>
+
+</html> -->
+
+<body>
+  <app-toolbar></app-toolbar>
+
+  <div *ngIf="imagesLoaded" class="background-container"
+    [ngStyle]="{'background-image': 'url(' + images[currentIndex] + ')'}">
+    <div class="container">
+      <img src="assets/img/logo1.png" alt="logo" class="logo" [routerLink]="('/')">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</body>

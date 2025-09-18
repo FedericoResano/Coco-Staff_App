@@ -1,0 +1,36 @@
+.servicios {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.titulo-servicios {
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.lista-servicios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-servicios li {
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.lista-servicios h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.lista-servicios p {
+  margin: 0;
+  font-size: 16px;
+}

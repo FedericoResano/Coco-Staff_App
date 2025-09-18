@@ -1,8 +1,8 @@
 <div class="calendar-carousel">
-  <!-- Flecha izquierda -->
+
   <button class="arrow" (click)="scrollLeft()" [class.disabled]="scrollDisabled">&lt;</button>
 
-  <!-- Contenedor de días -->
+
   <div class="days-container" #daysContainer>
     <div *ngFor="let dia of diasDeLaSemana" class="day" [class.disabled]="fechaInvalida(dia)"
       [class.selected]="selectedDate?.toDateString() === dia.toDateString()"
@@ -12,7 +12,6 @@
     </div>
   </div>
 
-  <!-- Flecha derecha -->
   <button class="arrow" (click)="scrollRight()">&gt;</button>
 </div>
 
@@ -27,7 +26,10 @@
 </div>
 <div>
   <div class="divButton">
-    <button class="btn btn-primary btnSubmit tipografia-marca" (click)="horarioElegido()">
+    <button class="btn btnVolver tipografia-marca" (click)="volver.emit()">
+      Volver
+    </button>
+    <button class="btn btn-primary btnSubmit tipografia-marca" [disabled]="btnDisabled" (click)="horarioElegido()">
       Siguiente
     </button>
   </div>

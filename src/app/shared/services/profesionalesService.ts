@@ -14,7 +14,6 @@ export class ProfesionalesService {
     constructor(private http: HttpClient) {}
 
     getAll(): Observable<ProfesionalModel[]> {
-        debugger;
         return this.http.get<ProfesionalModel[]>(this.apiUrl+ "/ObtenerTodos");
     }
 }

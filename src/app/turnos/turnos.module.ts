@@ -9,6 +9,7 @@ import { PanelProfesionalesComponent } from './panel-profesionales/panel-profesi
 import { FormClienteComponent } from './form-cliente/form-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormDetalleTurnoComponent } from './form-detalle-turno/form-detalle-turno.component';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { FormDetalleTurnoComponent } from './form-detalle-turno/form-detalle-tur
         TurnosRoutingModule,
         MatExpansionModule,
       ReactiveFormsModule, 
-      FormsModule
+      FormsModule,
+       RecaptchaModule,
+      RecaptchaFormsModule,
         
     ],
     exports: [

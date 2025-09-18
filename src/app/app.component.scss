@@ -1,25 +1,33 @@
-.container{
-    margin-left:0px;
-    margin-right:0px;
-    margin-top:0px;
-    max-width: 1600px;
-    background-size: auto;
-    
-}
-
-.logo {
-  width: 200px;
-  height: auto; /* mantiene proporción */
-  display: block;
-  margin: 0 auto; /* centrado horizontal */
-}
+// .logo {
+//   width: 200px;
+//   height: auto; /* mantiene proporción */
+//   display: block;
+//   margin: 0 auto; /* centrado horizontal */
+// }
 .background-container {
   width: 100%;
-  height: calc(100vh - 60px);
+  min-height: 100vh;
+    /* mejor que height fijo */
   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+    /* así no se centra vertical si no queremos */
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-top: 70px;
+  /* si toolbar es fija */
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }

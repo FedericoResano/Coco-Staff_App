@@ -7,7 +7,10 @@
 </div>
 <div class="divButton">
 
-  <button class="btn btn-primary btnSubmit tipografia-marca" (click)="continuar()">
+  <button class="btn btnVolver tipografia-marca" (click)="volver.emit()">
+    Volver
+  </button>
+  <button class="btn  btnSubmit tipografia-marca" [disabled]="btnDisabled" (click)="continuar()">
     Siguiente
   </button>
 </div>

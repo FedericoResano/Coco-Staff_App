@@ -9,8 +9,11 @@ import { HorariosService } from 'src/app/shared/services/horariosService';
 })
 export class PanelHorariosComponent implements OnInit {
   @ViewChild('daysContainer', { static: false }) daysContainer!: ElementRef;
+
   @Input() codigoProfesional: number | null = null;
+  @Input() duracionServicio: string | null = null;
   @Output() horarioSeleccionado = new EventEmitter<HorarioTurnoModel>()
+  @Output() volver = new EventEmitter<void>();
 
   fechaDeHoy = new Date();
   fechaOcupada:Date[] = [];
@@ -20,11 +23,13 @@ export class PanelHorariosComponent implements OnInit {
   selectedHorario: HorarioModel | null = null;
   horariosDisponibles: HorarioModel[]= [];
   scrollDisabled =false;
+  btnDisabled =true;
+
   constructor(private horariosService: HorariosService) { }
   diasDeLaSemana: Date[] = [];
   nombresDeDias= ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   ngOnInit() {
-    this.cargarHorarios();
+    this.selectDate(this.fechaDeHoy);
     this.generateCalendar();
   }
 
@@ -51,19 +56,38 @@ export class PanelHorariosComponent implements OnInit {
 
  selectDate(dia: Date) {
     this.selectedDate = dia;
+    this.cargarHorarios(dia);
+    this.btnDisabled= true;
   }
 
   selectHorario(horario: HorarioModel) {
     this.selectedHorario = horario;
+    this.btnDisabled= false;
   }
 
   cargarHorarios(date?:Date): void {
-    this.horariosService.getAll(this.fechaDeHoy.toISOString().split('T')[0], this.codigoProfesional).subscribe((data) => {
+    
+    let fechaParametro:string;
+    if(date == null)
+        fechaParametro= this.fechaDeHoy.toISOString().split('T')[0];
+    else
+        fechaParametro = date.toISOString().split('T')[0]  
+
+    this.horariosService.getAll(fechaParametro, this.codigoProfesional, this.duracionServicio).subscribe((data) => {
       this.horariosDisponibles = data;
-      if(this.horariosDisponibles.length> 0)
-        this.selectDate(this.fechaDeHoy);
+      
+      if(this.horariosDisponibles.length == 0)
+      {
+        let fechaInvalida = date?? this.fechaDeHoy;
+        this.fechaOcupada.push(fechaInvalida);
+        let fechaACagar= date?? this.fechaDeHoy;
+        fechaACagar.setDate(fechaACagar.getDate() +1)
+        this.selectDate(fechaACagar)
+      }
     });
   }
+
+
    scrollLeft() {
     this.daysContainer.nativeElement.scrollBy({ left: -200, behavior: 'smooth' });
     this.fechaDeHoy.setDate(this.fechaDeHoy.getDate() - 2)

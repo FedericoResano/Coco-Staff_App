@@ -7,12 +7,7 @@ const routes: Routes = [
    {
     path:'',
     component: InicioComponent
-  },
-  // {
-  //   path:'turnos',
-  //   loadChildren: () => import('./turnos/turnos.module').then(m => m.TurnosModule)
-  // },
-  
+  }, 
 
 ];
 

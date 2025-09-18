@@ -14,8 +14,7 @@ export class HorariosService {
 
     constructor(private http: HttpClient) {}
 
-    getAll(fecha:string, codigoEmpleado:number): Observable<HorarioModel[]> {
-        debugger;
-        return this.http.get<HorarioModel[]>(this.apiUrl+ "/ObtenerHorariosDisponibles/"+fecha+"/"+codigoEmpleado);
+    getAll(fecha:string, codigoEmpleado:number, duracionServicio:string): Observable<HorarioModel[]> {
+        return this.http.get<HorarioModel[]>(this.apiUrl+ "/ObtenerHorariosDisponibles/"+fecha+"/"+codigoEmpleado + "/" + duracionServicio);
     }
 }

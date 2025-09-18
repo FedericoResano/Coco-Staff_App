@@ -1,18 +1,25 @@
-<div class="dropdown-centered" *ngIf="servicioElegido == null">
-  <app-servicios-panel (servicioSeleccionado)="seleccionarServicio($event)"></app-servicios-panel>
+<div class="dropdown-centered" *ngIf="mensajeDeErrorPost != null">
+  <span class="text-danger"> {{this.mensajeDeErrorPost}} </span>
+</div>
+
+<div class="dropdown-centered" *ngIf="step == 0">
+  <app-servicios-panel (servicioSeleccionado)="servicioSeleccionado($event)"></app-servicios-panel>
   
 </div>
-<div class="dropdown-centered" *ngIf="servicioElegido != null && profesionalElegido == null">
-  <app-panel-profesionales (profesionalSeleccionado)="profesionalSeleccionado($event)"></app-panel-profesionales>
+<div class="dropdown-centered" *ngIf="step == 1">
+  <app-panel-profesionales (profesionalSeleccionado)="profesionalSeleccionado($event)"
+    (volver)="pasoAnterior()"></app-panel-profesionales>
  
 </div>
-<div class="dropdown-centered" *ngIf="servicioElegido != null && profesionalElegido != null && horarioDeTurno == null">
+<div class="dropdown-centered" *ngIf="step == 2">
   <app-panel-horarios [codigoProfesional]="profesionalElegido.codigo"
-    (horarioSeleccionado)="horarioSeleccionado($event)"></app-panel-horarios>
+    [duracionServicio]="servicioElegido.duracionServicio"
+    (horarioSeleccionado)="horarioSeleccionado($event)"
+    (volver)="pasoAnterior()"></app-panel-horarios>
 </div>
-<div *ngIf="servicioElegido != null && profesionalElegido != null && horarioDeTurno != null && !turnoGuardado">
-  <app-form-cliente (DatosDelCliente)="datosDelCliente($event)"></app-form-cliente>
+<div *ngIf="step ==3" class="dropdown-centered">
+  <app-form-cliente (DatosDelCliente)="datosDelCliente($event)" (volver)="pasoAnterior()"></app-form-cliente>
 </div>
-<div *ngIf="turnoGuardado">
+<div *ngIf="step == 4">
   <app-form-detalle-turno [turnoReservado]="turnoModel"></app-form-detalle-turno>
 </div>

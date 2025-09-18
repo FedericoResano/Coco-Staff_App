@@ -71,8 +71,14 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+  justify-content: flex-start;
 }
-
+.horarios button {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border-radius: 8px;
+  min-width: 80px;
+}
 .horario {
   padding: 8px 16px;
   border-radius: 20px;

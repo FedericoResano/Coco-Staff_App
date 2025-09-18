@@ -9,8 +9,11 @@ import { ClienteModel } from 'src/app/shared/models/clienteModel';
 })
 export class FormClienteComponent {
     clienteForm: FormGroup;
+    //  captchaResponse: string | null = null;
+    //  siteKey: string ="6LeJ_cwrAAAAAJcC85Jc_GFtF94DfUZCSFAsFebX";
 
     @Output() DatosDelCliente = new EventEmitter<ClienteModel>();
+    @Output() volver = new EventEmitter<void>();
 
     modeloAEnviar: ClienteModel | null = null;
 
@@ -22,6 +25,11 @@ export class FormClienteComponent {
             telefono: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^[0-9+\s()-]{7,20}$/)]]
         });
     }
+
+    // resolvedCaptcha(captchaResponse: string) {
+    //     this.captchaResponse = captchaResponse;
+    //     console.log('Captcha response:', captchaResponse);
+    // }
 
     onSubmit() {
         if (this.clienteForm.invalid) {

@@ -1,19 +1,5 @@
-<mat-list>
-  <mat-list-item>
-    <button mat-button class="btn color-background tipografia-marca" (click)="[routerLink.navigate(['/turnos'])]">
-      Solicitar turno
-    </button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <button mat-button class="btn color-background tipografia-marca">
-      Nosotras
-    </button>
-  </mat-list-item>
-
-  <mat-list-item>
-    <button matFab extended>
-      Servicios
-    </button>
-  </mat-list-item>
-</mat-list>
+<div class="menu">
+  <a class="menu-btn color-background tipografia-marca headers" routerLink="/turnos">Solicitar turno</a>
+  <a class="menu-btn color-background tipografia-marca headers" routerLink="/contacto">Nosotras</a>
+  <a class="menu-btn color-background tipografia-marca headers" routerLink="/info-servicios">Servicios</a>
+</div>

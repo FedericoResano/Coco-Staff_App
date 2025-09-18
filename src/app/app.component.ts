@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-root',
@@ -11,7 +12,11 @@ export class AppComponent implements OnInit {
   currentIndex = 0;
   images: string[] = [];
   imagesLoaded = false;
-  constructor(private http: HttpClient){}
+  routerLink: Router;
+  
+  constructor(private http: HttpClient, private router: Router){
+    this.routerLink = router;
+  }
   
 
 ngOnInit(){

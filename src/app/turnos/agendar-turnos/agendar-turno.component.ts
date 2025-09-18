@@ -20,6 +20,8 @@ export class AgendarTurnoComponent implements OnInit {
     clienteTurno: ClienteModel = null;
     turnoModel: TurnoModel= null;
     turnoGuardado =false;
+    step:number = 0;
+    mensajeDeErrorPost:string = null;
 
     constructor(private turnosService: TurnosService) { }
 
@@ -33,22 +35,29 @@ export class AgendarTurnoComponent implements OnInit {
         
     }
 
-    seleccionarServicio(servicio: ServicioModel) {
+    servicioSeleccionado(servicio: ServicioModel) {
       this.servicioElegido= servicio;
+      
+      this.siguientePaso();
     }
 
     profesionalSeleccionado(profesional:ProfesionalModel){
       this.profesionalElegido = profesional;
+      
+      this.siguientePaso();
     }
 
     horarioSeleccionado(horarioSeleccionado:HorarioTurnoModel){
       this.horarioDeTurno = horarioSeleccionado;
+      
+      this.siguientePaso();
     }
 
     datosDelCliente(clienteModel: ClienteModel)
     {
       this.clienteTurno = clienteModel;
       this.postTurno();
+      this.siguientePaso();
       
     }
 
@@ -62,18 +71,26 @@ export class AgendarTurnoComponent implements OnInit {
         clienteModel: this.clienteTurno,
         estadoTurnoModel: null
       }
-debugger;
+
         this.turnosService.add( this.turnoModel).subscribe({
-  next: (resp) => {
-    this.turnoGuardado= true;
-    console.log('Código de respuesta:', resp.status);
-    console.log('Cuerpo de la respuesta:', resp.body);
-  },
-  error: (err) => {
-    console.error('Error HTTP:', err.status);
-    console.error('Mensaje del servidor:', err.error);
-  }
-});;
+              next: (resp) => {
+                 this.turnoGuardado= true;
+              },
+              
+              error: (err) => {
+                console.log(err.errors);
+                  this.mensajeDeErrorPost = err.message;
+              }
+        });
     }
+
+    siguientePaso(){
+      this.step++;
+    }
+
+    pasoAnterior(){
+      if(this.step >0 ) this.step--;
+    }
+
   
 }

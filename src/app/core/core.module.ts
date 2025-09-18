@@ -4,11 +4,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CoreRoutingModule } from './core.routing.module';
-import { MaterialModule } from '../material/material.module';
 import { TurnosModule } from '../turnos/turnos.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { ContactoModule } from '../contacto/contacto.module';
+import { InfoServiciosModule } from '../info-servicios/info-servicios.module';
 
 
 
@@ -16,16 +17,17 @@ import { MatListModule } from '@angular/material/list';
   declarations: [
     SidebarComponent,
     ToolbarComponent,
-    InicioComponent
+    InicioComponent,
   ],
   imports: [
     CommonModule,
     CoreRoutingModule,
     TurnosModule,
-    MaterialModule,
     MatExpansionModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    ContactoModule,
+    InfoServiciosModule,
 
 
   ],
@@ -33,7 +35,7 @@ import { MatListModule } from '@angular/material/list';
     SidebarComponent,
     ToolbarComponent,
     InicioComponent,
-    CoreRoutingModule
+    CoreRoutingModule,
   ]
 })
 export class CoreModule { }

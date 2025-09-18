@@ -10,9 +10,11 @@ import { ProfesionalesService } from "src/app/shared/services/profesionalesServi
 export class PanelProfesionalesComponent implements OnInit {
     profesionales: ProfesionalModel[] = [];
     seleccionado: ProfesionalModel | null = null;
+    btnDisabled= true;
 
     @Output() profesionalSeleccionado = new EventEmitter<ProfesionalModel>();
-
+    @Output() volver = new EventEmitter<void>();
+    
     constructor(private profesionalesService: ProfesionalesService) {}
 
     ngOnInit(): void {
@@ -26,6 +28,7 @@ export class PanelProfesionalesComponent implements OnInit {
 
     seleccionarEmpleado(profesional: ProfesionalModel): void {
         this.seleccionado = profesional;
+        this.btnDisabled = false;
     }
 
     continuar(){

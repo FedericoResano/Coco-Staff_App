@@ -1,0 +1,28 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* más espacio entre botones */
+  align-items: center;
+  margin-top: 30px; /* baja un poquito más desde el logo */
+}
+
+.menu-btn {
+  display: block;
+  padding: 14px 22px;   /* más alto y ancho */
+  font-size: 18px;      /* letra más grande */
+  font-weight: 600;     /* un poco más gruesa */
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;  /* bordes más suaves */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 220px;         /* ancho fijo mayor */
+  text-align: center;
+  letter-spacing: 0.5px; /* más aire en el texto */
+}
+
+.menu-btn:hover {
+  background-color: grey;
+  color: #fff;
+  transform: translateY(-3px) scale(1.03); 
+}

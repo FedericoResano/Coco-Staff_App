@@ -1,7 +1,7 @@
 <div class="container mt-4 p-4 bg-light rounded shadow color-background">
   <!-- Check de confirmación -->
   <div class="text-center mb-4">
-    <i class="bi bi-check-circle-fill text-success fs-1"></i>
+    <span class='material-icons icon' style="color:green">check</span>
     <label class="text-success mt-2 tipografia-marca">Reserva generada correctamente</label>
   </div>
 
@@ -10,21 +10,21 @@
   <div class="row mb-3">
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Nombre:</label>
-      <div class="tipografia-marca">{{ turnoReservado.clienteModel.nombreCliente }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.clienteModel.nombreCliente }}</div>
     </div>
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Apellido:</label>
-      <div class="tipografia-marca">{{ turnoReservado.clienteModel.apellidoCliente  }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.clienteModel.apellidoCliente }}</div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Mail:</label>
-      <div class="tipografia-marca">{{ turnoReservado.clienteModel.mailCliente  }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.clienteModel.mailCliente }}</div>
     </div>
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Teléfono:</label>
-      <div class="tipografia-marca">{{ turnoReservado.clienteModel.telefonoCliente  }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.clienteModel.telefonoCliente }}</div>
     </div>
   </div>
 
@@ -33,21 +33,21 @@
   <div class="row mb-3">
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Servicio:</label>
-      <div class="tipografia-marca">{{ turnoReservado.servicioModel.servicio }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.servicioModel.servicio }}</div>
     </div>
     <div class="col-md-6">
       <label class="form-label fw-bold  tipografia-marca headersSub">Horario:</label>
-      <div class="tipografia-marca">{{ turnoReservado.horarioModel.horario }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.horarioModel.horario }}</div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Fecha:</label>
-      <div class="tipografia-marca">{{ turnoReservado.fechaTurno }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.fechaTurno }}</div>
     </div>
     <div class="col-md-6">
       <label class="form-label fw-bold tipografia-marca headersSub">Profesional:</label>
-      <div class="tipografia-marca">{{ turnoReservado.empleadoModel.nombre }}</div>
+      <div class="tipografia-marca input-text">{{ turnoReservado.empleadoModel.nombre }}</div>
     </div>
   </div>
 </div>

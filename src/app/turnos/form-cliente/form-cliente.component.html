@@ -31,13 +31,13 @@
 
     </div>
 
-    
+
     <div class="mb-3">
 
 
         <label for="mail" class="form-label tipografia-marca  headersSub ">Mail*</label>
         <input type="email" id="mail" formControlName="mail" class="form-control bg-white tipografia-marca " />
-        
+
         <div *ngIf="clienteForm.get('mail')?.invalid && clienteForm.get('mail')?.touched">
             <div class="tipografia-marca" *ngIf="clienteForm.get('mail')?.errors?.['required']">El mail es obligatorio.
             </div>
@@ -56,7 +56,7 @@
 
         <label for="telefono" class="form-label tipografia-marca headersSub">Teléfono*</label>
         <input type="tel" id="telefono" formControlName="telefono" class="form-control bg-white tipografia-marca " />
-        
+
         <div *ngIf="clienteForm.get('telefono')?.invalid && clienteForm.get('telefono')?.touched">
             <div class="tipografia-marca" *ngIf="clienteForm.get('telefono')?.errors?.['required']">El teléfono es
                 obligatorio.</div>
@@ -72,7 +72,11 @@
 
 
     <div class="divButton">
-        <!-- <button type="submit" class="btn btnSubmit tipografia-marca" [disabled]="clienteForm.invalid">Enviar</button> -->
-        <button type="submit" class="btn btnSubmit tipografia-marca">Agendar</button>
+        <button class="btn btnVolver tipografia-marca" (click)="volver.emit()">
+            Volver
+        </button>
+        <button type="submit" class="btn btnSubmit tipografia-marca" [disabled]="clienteForm.invalid">
+            Enviar
+        </button>
     </div>
 </form>
